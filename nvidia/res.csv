@@ -1,0 +1,2 @@
+label,anger pred,anger prob,anticipation pred,anticipation prob,disgust pred,disgust prob,fear pred,fear prob,joy pred,joy prob,sadness pred,sadness prob,surprise pred,surprise prob,trust pred,trust prob,sentence
+-1.0,0.0,0.000114712966,0.0,0.007430324,0.0,0.00029916648,0.0,0.008211732,1.0,0.6477179,0.0,0.003464421,0.0,0.0002503946,0.0,0.0012978325,I had a good day.

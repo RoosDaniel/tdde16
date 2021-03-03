@@ -1,6 +1,8 @@
-/all_movies.json
-/all_movies_filtered.json
+*.json
 /nrc
-/nvidia
+/nvidia/sd
+/nvidia/output
+/nvidia/movies
 /old
 /venv
+activate_venv.bat
