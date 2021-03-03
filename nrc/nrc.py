@@ -1,8 +1,9 @@
-import pandas as pd
+import pandas as pd, numpy as np, matplotlib.pyplot as plt
 
 import json, time, datetime
 
 from sklearn.preprocessing import normalize
+from sklearn.manifold import TSNE
 
 
 MOVIE_FILE = "../all_movies_filtered.json"
@@ -212,9 +213,23 @@ def vectorize_data():
         json.dump(vectorized, file, indent=2, sort_keys=True)
 
 
+def save_tsne():
+    tsne = TSNE(perplexity=10)
+
+    with open(VECTORIZED_FILE) as file:
+        vect = json.load(file)
+    
+    em = np.array([m["emotions"] for m in vect["movies"]])
+    em_embedded = tsne.fit_transform(em).transpose()
+
+    plt.scatter(*em_embedded)
+    plt.show()
+
 
 if __name__ == "__main__":
     # process_all_remaining()
     # add_scores()
     # generate_data()
-    vectorize_data()
+    # vectorize_data()
+
+    save_tsne()
