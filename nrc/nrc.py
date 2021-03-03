@@ -164,7 +164,7 @@ def generate_data():
         for emotion, data in movie["emotions"].items():
             emotions.append({"emotion": emotion.strip(), "score": data["score"]})
 
-        if genres:  # Backwards compatibility
+        if genres:
             return_data.append({
                 "id": i,
                 "title": movie["title"],
@@ -213,23 +213,8 @@ def vectorize_data():
         json.dump(vectorized, file, indent=2, sort_keys=True)
 
 
-def save_tsne():
-    tsne = TSNE(perplexity=10)
-
-    with open(VECTORIZED_FILE) as file:
-        vect = json.load(file)
-    
-    em = np.array([m["emotions"] for m in vect["movies"]])
-    em_embedded = tsne.fit_transform(em).transpose()
-
-    plt.scatter(*em_embedded)
-    plt.show()
-
-
 if __name__ == "__main__":
     # process_all_remaining()
     # add_scores()
     # generate_data()
-    # vectorize_data()
-
-    save_tsne()
+    vectorize_data()
