@@ -44,10 +44,8 @@ def vectorize():
     }
 
     for file in os.listdir("output"):
-        movie = None
-        for mo in data:
-            if mo["title"].replace(" ", "_") == file[4:-4]:
-                movie = mo
+        index = int(file[:3])
+        movie = data[index]
 
         with open("output\\%s" % file, "rb") as f:
             emotions = np.load(f)
@@ -56,6 +54,7 @@ def vectorize():
         gs = []
 
         m_gs = [g.lower() for g in movie["genres"]]
+
 
         for g in genres:
             if g in m_gs:
@@ -66,11 +65,11 @@ def vectorize():
         vectorized["movies"].append({
             "title": file[:-4],
             "genres": list(gs),
-            "vector": list(vector)
+            "emotions": list(vector)
         })
     
     with open("nvid_vect.json", "w") as file:
-        json.dump(vectorized, file, indent=2)
+        json.dump(vectorized, file, indent=2, sort_keys=True)
     
 
 if __name__ == "__main__":
