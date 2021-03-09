@@ -95,7 +95,7 @@ if __name__ == "__main__":
         data = json.load(file)
     
     data = transform_genres(data)
-    data = remove_outside_genre_threshold(data, 400, 200)
+    data = remove_outside_genre_threshold(data, 700, 100)
 
     with open(OUTPUT, "w") as file:
         json.dump(data, file)

@@ -216,5 +216,5 @@ def vectorize_data():
 if __name__ == "__main__":
     # process_all_remaining()
     # add_scores()
-    # generate_data()
+    generate_data()
     vectorize_data()
